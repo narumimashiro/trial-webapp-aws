@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from "next"
+import { Geist, Geist_Mono } from "next/font/google"
+import "@/styles/globals.scss"
+import '@naru/untitled-library/color/sekai-colors.css'
+import { SekaiProvider } from "@/components/SekaiProvider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,10 +24,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <SekaiProvider>
+          {children}
+        </SekaiProvider>
       </body>
     </html>
   );
